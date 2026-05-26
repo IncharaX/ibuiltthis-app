@@ -5,8 +5,11 @@ export default function Home() {
   return (
     
     <div>
-      <HeroSection/>
-      <FeaturedProducts/>
+      <HeroSection />
+
+      <FeaturedProducts />
+
+      <RecentlyLaunchedProducts />
     </div>
   );
 }
