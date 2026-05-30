@@ -49,7 +49,7 @@ export default function VotingButtons({
       <Button
         onClick={handleUpvote}
         variant="ghost"
-        size="icon-sm"
+        size="icon"
         className={cn(
           "h-8 w-8 text-primary ",
           hasVoted
@@ -66,7 +66,7 @@ export default function VotingButtons({
       <Button
         onClick={handleDownvote}
         variant="ghost"
-        size="icon-sm"
+        size="icon"
         disabled={isPending}
         className={cn(
           "h-8 w-8 text-primary ",

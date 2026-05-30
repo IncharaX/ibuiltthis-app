@@ -1,3 +1,4 @@
+
 import AdminProductCard from "@/components/admin/admin-product-card";
 import StatsCard from "@/components/admin/stats-card";
 import EmptyState from "@/components/common/empty-state";
@@ -24,7 +25,7 @@ export default async function AdminPage() {
     redirect("/");
   }
   const allProducts = await getAllProducts();
-  
+
   const approvedProducts = allProducts.filter(
     (product) => product.status === "approved"
   );

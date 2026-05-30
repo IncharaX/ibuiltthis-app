@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { products } from "@/db/schema";
 import { desc, eq } from "drizzle-orm";
-import { connection } from "next/server";
+
 
 export async function getFeaturedProducts() {
   "use cache";
@@ -35,7 +35,7 @@ export async function getAllProducts() {
 }
 
 export async function getRecentlyLaunchedProducts() {
-  await connection();
+ 
   const productsData = await getAllApprovedProducts();
   const oneWeekAgo = new Date();
   oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);

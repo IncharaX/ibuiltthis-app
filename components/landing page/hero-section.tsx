@@ -61,14 +61,14 @@ export default function HeroSection() {
             builders, genuine feedback.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <Button aschild size="lg" className="text-base px-8 shadow-lg">
+            <Button asChild size="lg" className="text-base px-8 shadow-lg">
               <Link href="/submit">
                 <SparklesIcon className="size-5" />
                 Share Your Project
               </Link>
             </Button>
             <Button
-              aschild
+              asChild
               size="lg"
               className="text-base px-8 shadow-lg"
               variant="secondary"
