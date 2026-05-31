@@ -5,7 +5,7 @@ import {
 } from "@/lib/products/product-actions";
 import { cn } from "@/lib/utils";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
-import { useOptimistic, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function VotingButtons({
@@ -17,23 +17,22 @@ export default function VotingButtons({
   voteCount: number;
   productId: number;
 }) {
-  const [optimisticVoteCount, setOptimisticVoteCount] = useOptimistic(
-    initialVoteCount,
-    (currentCount, change: number) => Math.max(0, currentCount + change)
+  const [optimisticVoteCount, setOptimisticVoteCount] = useState(
+    initialVoteCount
   );
 
   const [isPending, startTransition] = useTransition();
 
   const handleUpvote = async () => {
+    setOptimisticVoteCount((current) => Math.max(0, current + 1));
     startTransition(async () => {
-      setOptimisticVoteCount(1);
       await upvoteProductAction(productId);
     });
   };
 
   const handleDownvote = async () => {
+    setOptimisticVoteCount((current) => Math.max(0, current - 1));
     startTransition(async () => {
-      setOptimisticVoteCount(-1);
       await downvoteProductAction(productId);
     });
   };

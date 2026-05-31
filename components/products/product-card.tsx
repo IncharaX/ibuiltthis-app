@@ -14,11 +14,14 @@ import { ProductType } from "@/types";
 export default function ProductCard({ product }: { product: ProductType }) {
   const hasVoted = false;
   return (
-    <Link href={`/products/${product.slug}`}>
-      <Card className="group card-hover hover:bg-primary-foreground/10 border-solid border-gray-400 min-h-[200px]">
-        <CardHeader className="flex-1">
-          <div className="flex items-start gap-4">
-            <div className="flex-1 min-w-0">
+    <Card className="group card-hover hover:bg-primary-foreground/10 border-solid border-gray-400 min-h-[200px]">
+      <CardHeader className="flex-1">
+        <div className="flex items-start gap-4">
+          <Link
+            href={`/products/${product.slug}`}
+            className="flex-1 min-w-0"
+          >
+            <div>
               <div className="flex items-center gap-2">
                 <CardTitle className="text-lg group-hover:text-primary transition-colors">
                   {product.name}
@@ -32,24 +35,26 @@ export default function ProductCard({ product }: { product: ProductType }) {
               </div>
               <CardDescription>{product.description}</CardDescription>
             </div>
-            {/** Voting buttons */}
+          </Link>
+          {/** Voting buttons */}
+          <div>
             <VotingButtons
               hasVoted={hasVoted}
               voteCount={product.voteCount}
               productId={product.id}
             />
           </div>
-        </CardHeader>
-        <CardFooter>
-          <div className="flex items-center gap-2">
-            {product.tags?.map((tag) => (
-              <Badge variant="secondary" key={tag}>
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </CardFooter>
-      </Card>
-    </Link>
+        </div>
+      </CardHeader>
+      <CardFooter>
+        <div className="flex items-center gap-2">
+          {product.tags?.map((tag) => (
+            <Badge variant="secondary" key={tag}>
+              {tag}
+            </Badge>
+          ))}
+        </div>
+      </CardFooter>
+    </Card>
   );
 }
